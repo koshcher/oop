@@ -5,7 +5,6 @@ export default defineConfig({
   title: "Кощей Роман",
   description: "Завдання з ООП",
 
-  // replace knu-template with name of your repository
   base: "/oop/",
   cleanUrls: true,
 

@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-internal class Program
+﻿internal class Program
 {
     private static void Main(string[] args)
     {
@@ -61,9 +59,10 @@ internal class Program
         if (!int.TryParse(perimeterStr, out var perimeter))
         {
             Console.WriteLine("Can't parse perimeter into a integer");
+            return;
         }
 
-        int side = perimeter / 4;
+        double side = perimeter / 4.0;
         Console.WriteLine($"Smaller diagonal equals: {side}");
     }
 
@@ -73,15 +72,29 @@ internal class Program
         if (!double.TryParse(Console.ReadLine(), out var a))
         {
             Console.WriteLine("Can't parse 'a' into double");
+            return;
         }
 
-        Console.WriteLine("Enter b:");
+        Console.WriteLine("Enter b (!=0):");
         if (!double.TryParse(Console.ReadLine(), out var b))
         {
             Console.WriteLine("Can't parse 'b' into double");
+            return;
+        }
+        if (b == 0)
+        {
+            Console.WriteLine("Can't divide by 0");
+            return;
         }
 
-        var x = Math.Pow(Math.E, a) * Math.Sqrt(Math.Sin(a * a) / Math.Log(2 + b)) + Math.Tan(a / b);
+        var underSqrt = Math.Sin(a * a) / Math.Log(2 + b);
+        if (underSqrt < 0)
+        {
+            Console.WriteLine($"Can't find square root of negative number {underSqrt}");
+            return;
+        }
+
+        var x = Math.Pow(Math.E, a) * Math.Sqrt(underSqrt) + Math.Tan(a / b);
         Console.WriteLine($"X = {x}");
     }
 
