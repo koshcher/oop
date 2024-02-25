@@ -7,6 +7,11 @@ export default defineConfig({
 
   // replace knu-template with name of your repository
   base: "/oop/",
+  cleanUrls: true,
+
+  markdown: {
+    math: true,
+  },
 
   themeConfig: {
     nav: [{ text: "Лабораторні", link: "/labs/1" }],
