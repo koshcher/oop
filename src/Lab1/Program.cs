@@ -81,7 +81,7 @@
             Console.WriteLine("Can't parse 'b' into double");
             return;
         }
-        if (b == 0)
+        else if (b == 0)
         {
             Console.WriteLine("Can't divide by 0");
             return;
