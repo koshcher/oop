@@ -1,6 +1,4 @@
-﻿using System.Reflection.PortableExecutable;
-
-namespace Lab2;
+﻿namespace Lab2;
 
 public static class Task8
 {
