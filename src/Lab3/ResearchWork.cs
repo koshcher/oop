@@ -5,10 +5,10 @@ public static class ResearchWork
     public static void PrintGeneratedArray()
     {
         var arr = GenerateArray(20);
-        Console.WriteLine($"Array size: {arr}");
+        Console.WriteLine($"Array size: {arr.Length}");
         for (int i = 0; i < arr.Length; i++)
         {
-            Console.Write(arr[i]);
+            Console.Write($"{arr[i]} ");
         }
         Console.WriteLine();
     }
@@ -145,6 +145,11 @@ public static class ResearchWork
 
     private static int[,] GenerateMatrix(int rows, int columns, int minValue, int maxValue)
     {
+        if (maxValue < minValue)
+        {
+            (minValue, maxValue) = (maxValue, minValue);
+        }
+
         Random random = new();
         int[,] matrix = new int[rows, columns];
 

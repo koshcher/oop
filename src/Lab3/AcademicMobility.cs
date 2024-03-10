@@ -13,7 +13,7 @@ public partial class AcademicMobility
         InternationPrograms = [];
         Universities = [];
         Students = [];
-        fileWriter = new StreamWriter("academic-mobility.txt");
+        fileWriter = new StreamWriter("academic-mobility.txt", true) { AutoFlush = true };
     }
 
     public AcademicMobility(
@@ -22,7 +22,7 @@ public partial class AcademicMobility
         List<string> universities, List<Student> students
     )
     {
-        fileWriter = new StreamWriter(fileName);
+        fileWriter = new StreamWriter(fileName, true) { AutoFlush = true };
         Email = email;
         InternationPrograms = internationPrograms;
         Universities = universities;
@@ -110,9 +110,9 @@ public partial class AcademicMobility
         WriteTo(Console.WriteLine);
     }
 
-    public void WriteToFile(StreamWriter writer)
+    public void WriteToFile()
     {
-        WriteTo(writer.WriteLine);
+        WriteTo(fileWriter.WriteLine);
     }
 
     /// <summary>
@@ -125,7 +125,7 @@ public partial class AcademicMobility
         writeLine($"Internation programs:");
         foreach (var program in InternationPrograms)
         {
-            writeLine($"- {program}");
+            writeLine($"- {program.Name}");
         }
         writeLine($"Universitiess:");
         foreach (var uni in Universities)
@@ -138,23 +138,7 @@ public partial class AcademicMobility
     {
         public IEnumerable<Student> GetBestCandidates(int limit)
         {
-            var candidates = new SortedList<double, Student>(limit + 1, ReverseDoubleComparer.Instance);
-
-            // go through students and add into sorted list by ratings
-            // if we added more than requested, then remove last
-            // last one has the lowest rating
-            foreach (var student in Students)
-            {
-                var rating = student.GetRating();
-                candidates.Add(rating, student);
-
-                if (candidates.Count > limit)
-                {
-                    candidates.RemoveAt(limit);
-                }
-            }
-
-            return candidates.Values;
+            return Students.OrderByDescending(x => x.GetRating()).Take(limit);
         }
     }
 }

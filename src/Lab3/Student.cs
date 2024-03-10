@@ -62,6 +62,35 @@ public class Student
         return marks;
     }
 
+    public static Student GenerateRandomStudent()
+    {
+        Random random = new();
+
+        string[] names = ["John", "Jane", "Alice", "Bob", "Eva", "Michael", "Olivia", "Daniel"];
+        string[] universities = ["Harvard", "MIT", "Stanford", "Oxford", "ETH Zurich", "NUS"];
+        string[] specialities = ["Computer Science", "Physics", "Engineering", "Biology", "Economics"];
+
+        Student randomStudent = new()
+        {
+            SurName = names[random.Next(names.Length)],
+            FirstName = names[random.Next(names.Length)],
+            Course = random.Next(1, 6),
+            Speciality = specialities[random.Next(specialities.Length)],
+            University = universities[random.Next(universities.Length)],
+            Marks = GenerateMarks()
+        };
+
+        // Generate random scientific achievements
+        for (int i = 0; i < 3; i++)
+        {
+            randomStudent.ScientificAchievements.Add(
+                (ScientificAchievement)random.Next(Enum.GetValues(typeof(ScientificAchievement)).Length)
+            );
+        }
+
+        return randomStudent;
+    }
+
     /// <summary>
     /// Maybe make static and return Student in future.
     /// </summary>
@@ -154,6 +183,8 @@ public class Student
     /// <param name="writer">Stream Writer of file</param>
     public void ExportIqResults(StreamWriter writer)
     {
+        if (Marks.Count == 0) return;
+
         int sum = 0;
         foreach (var mark in Marks)
         {
