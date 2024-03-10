@@ -1,5 +1,4 @@
 ﻿using Lab3;
-using System.Text;
 
 Console.WriteLine("Roman Koshchei IPZ-12-1");
 Console.WriteLine("Variant 14");
