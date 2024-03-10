@@ -33,8 +33,7 @@ internal static class Task2
             }
         }
 
-        List<int> primes = new();
-
+        List<int> primes = [];
         if (limit > 2)
         {
             primes.Add(2);

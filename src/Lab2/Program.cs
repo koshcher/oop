@@ -61,7 +61,6 @@ while (choise != null)
 
         default:
             choise = null;
-
             break;
     }
 }
