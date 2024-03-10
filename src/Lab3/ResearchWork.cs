@@ -16,16 +16,16 @@ public static class ResearchWork
     public static void Projects()
     {
         Console.WriteLine("Enter the number of projects (rows): ");
-        int projectsCount = int.Parse(Console.ReadLine() ?? "1");
+        int projectsCount = ConsoleHelpers.ReadInt(x => x > 0, "Must be a positive integer");
 
         Console.WriteLine("Enter the number of months (columns): ");
-        int monthsCount = int.Parse(Console.ReadLine() ?? "1");
+        int monthsCount = ConsoleHelpers.ReadInt(x => x > 0, "Must be a positive integer");
 
         Console.WriteLine("Enter the starting value of the range: ");
-        int minValue = int.Parse(Console.ReadLine() ?? "0");
+        int minValue = ConsoleHelpers.ReadInt(x => x > 0, "Must be non positive integer");
 
         Console.WriteLine("Enter the end value of the range: ");
-        int maxValue = int.Parse(Console.ReadLine() ?? "0");
+        int maxValue = ConsoleHelpers.ReadInt(x => x > 0, "Must be non positive integer");
 
         int[,] matrix = GenerateMatrix(projectsCount, monthsCount, minValue, maxValue);
         Console.WriteLine("Matrix of profits from projects:");
