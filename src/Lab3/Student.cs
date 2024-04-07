@@ -13,8 +13,11 @@ public enum ScientificAchievement
 /// </summary>
 public class Student
 {
-    public string SurName { get; set; }
+    private string surName;
+    public string SurName { get => surName; set => surName = value; }
+
     public string FirstName { get; set; }
+
     public int Course { get; set; }
     public string Speciality { get; set; }
     public string University { get; set; }
