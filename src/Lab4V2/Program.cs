@@ -28,3 +28,8 @@ var synopsisEffectiveness = Statistics.CalculateEffectivenessOfSynopsis(
     [45, 23, 56, 90, 93, 56], [87, 75, 23, 90, 95, 87]
 );
 Console.WriteLine($"Writing synopsis increase your scores {synopsisEffectiveness} times");
+
+List<IBook> allBooksTogether = [book, textbook, synopsis];
+Console.Write("Count of pages of books: ");
+Console.WriteLine($"[{string.Join(", ", allBooksTogether.Select(x => x.PagesCount.ToString()))}]");
+Console.WriteLine($"Sum of  pages of all books: {allBooksTogether.Sum(x => x.PagesCount)}");
