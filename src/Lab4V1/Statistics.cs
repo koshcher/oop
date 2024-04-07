@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab4V1;
+﻿namespace Lab4V1;
 
 /// <summary>
 /// Class contains different methods to calculatet statistics.
