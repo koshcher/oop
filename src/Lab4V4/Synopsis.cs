@@ -1,4 +1,4 @@
-﻿namespace Lab4V3;
+﻿namespace Lab4V4;
 
 public class Synopsis : Book
 {

@@ -1,4 +1,4 @@
-﻿namespace Lab4V3;
+﻿namespace Lab4V4;
 
 /// <summary>
 /// Class contains different methods to calculatet statistics.
